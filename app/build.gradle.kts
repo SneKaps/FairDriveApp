@@ -75,4 +75,14 @@ dependencies {
 
     implementation(libs.androidx.core.splashscreen)
 
+    //maps compose
+    implementation(libs.maps.compose)
+
+    //google map services
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+
+    //google utils
+    implementation(libs.android.maps.utils)
+
 }
