@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "763523062976",
+    "project_id": "fairdriveapp-d4296",
+    "storage_bucket": "fairdriveapp-d4296.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763523062976:android:a111bace67f3c3cdb56125",
+        "android_client_info": {
+          "package_name": "com.example.fairdriveapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzDet4LJozkjyPG_caWT7IIsSdQyZ8ZSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
