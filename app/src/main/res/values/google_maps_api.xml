@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--https://developers.google.com/maps/documentation/android-sdk/get-api-key-->
+    <string name ="google_maps_key" templateMergeStrategy ="preserve" translatable="false">AIzaSyDkUZs7He4lGYBd-25mdt_6NgQcSsLwWgI</string>
+</resources>

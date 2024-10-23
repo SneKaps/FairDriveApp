@@ -16,17 +16,24 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fairdriveapp.ui.theme.FairDriveAppTheme
+import com.example.fairdriveapp.utils.ManifestUtils
+import com.google.android.libraries.places.api.Places
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Places.isInitialized()) {
+            Places.initialize(applicationContext, "AIzaSyDkUZs7He4lGYBd-25mdt_6NgQcSsLwWgI")
+        }
         enableEdgeToEdge()
         installSplashScreen()
         setContent {
+            val viewModel: LocationViewModel = viewModel()
             val authViewModel : AuthViewModel = viewModel()
+            val mapViewModel : MapViewModel = viewModel()
             FairDriveAppTheme {
-                Navigation(authViewModel)
+                Navigation(authViewModel, viewModel, mapViewModel)
             }
         }
     }
