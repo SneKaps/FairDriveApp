@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 
+
 }
 
 android {
@@ -80,6 +81,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
+    //implementation(libs.google.firebase.database.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -106,10 +109,12 @@ dependencies {
     implementation(libs.converter.gson)
 
     val mapsComposeVersion = "4.4.1"
-    implementation("com.google.maps.android:maps-compose:$mapsComposeVersion")
+    implementation(libs.maps.compose.v441)
     // Google Maps Compose utility library
-    implementation("com.google.maps.android:maps-compose-utils:$mapsComposeVersion")
+    implementation(libs.maps.compose.utils)
     // Google Maps Compose widgets library
-    implementation("com.google.maps.android:maps-compose-widgets:$mapsComposeVersion")
+    implementation(libs.maps.compose.widgets)
+
+    //implementation(libs.firebase.database.v2020)
 
 }

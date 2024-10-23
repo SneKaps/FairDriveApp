@@ -12,6 +12,8 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,9 +24,11 @@ class MapViewModel :ViewModel(){
     private val _userLocation = mutableStateOf<LatLng?>(null)
     val userLocation: State<LatLng?> = _userLocation
 
+    val database: DatabaseReference = FirebaseDatabase.getInstance().reference
+
     //state to store selected location
-    private val _selectedLocation = mutableStateOf<LatLng?>(null)
-    val selectedLocation: State<LatLng?> = _selectedLocation
+    private val _pickLocation = mutableStateOf<LatLng?>(null)
+    val pickLocation: State<LatLng?> = _pickLocation
 
     private val _dropLocation = mutableStateOf<LatLng?>(null)
     val dropLocation : State<LatLng?> = _dropLocation
@@ -55,7 +59,7 @@ class MapViewModel :ViewModel(){
             if(!addresses.isNullOrEmpty()){
                 val address = addresses[0]
                 val latlng = LatLng(address.latitude, address.longitude)
-                _selectedLocation.value = latlng
+                _pickLocation.value = latlng
             }
             else{
                 "Address not found"

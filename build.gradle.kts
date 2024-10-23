@@ -9,5 +9,8 @@ plugins {
 buildscript {
     dependencies {
         classpath(libs.secrets.gradle.plugin)
+        classpath(libs.gradle)
+        classpath(libs.google.services)
+        classpath(libs.gradle.v810)
     }
 }

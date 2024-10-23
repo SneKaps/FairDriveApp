@@ -7,11 +7,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fairdriveapp.Screens.HomeScreen
 import com.example.fairdriveapp.Screens.LoginScreen
+import com.example.fairdriveapp.Screens.RideScreen
 import com.example.fairdriveapp.Screens.SignupScreen
 
 @Composable
 fun Navigation(authViewModel: AuthViewModel,
-               viewModel: LocationViewModel,
                mapViewModel: MapViewModel){
     val navController = rememberNavController()
 
@@ -23,7 +23,10 @@ fun Navigation(authViewModel: AuthViewModel,
             SignupScreen(Modifier, navController, authViewModel)
         }
         composable("home") {
-            HomeScreen(Modifier, navController, authViewModel, viewModel, mapViewModel)
+            HomeScreen(Modifier, navController, authViewModel, mapViewModel)
+        }
+        composable("ride"){
+            RideScreen()
         }
     }
 

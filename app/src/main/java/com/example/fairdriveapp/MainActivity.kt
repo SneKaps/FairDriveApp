@@ -29,11 +29,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         installSplashScreen()
         setContent {
-            val viewModel: LocationViewModel = viewModel()
+            //val viewModel: LocationViewModel = viewModel()
             val authViewModel : AuthViewModel = viewModel()
             val mapViewModel : MapViewModel = viewModel()
             FairDriveAppTheme {
-                Navigation(authViewModel, viewModel, mapViewModel)
+                Navigation(authViewModel, mapViewModel)
             }
         }
     }
