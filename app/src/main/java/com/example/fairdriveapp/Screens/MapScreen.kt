@@ -36,9 +36,11 @@ import com.example.fairdriveapp.data.Trip
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.Firebase
 
 
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.database
 
 import com.google.maps.android.compose.GoogleMap
 
@@ -65,6 +67,12 @@ fun MapScreen(mapViewModel: MapViewModel, navController: NavController) {
         pickLocation,
         dropLocation
     )
+
+    // Write a message to the database
+    val database = Firebase.database
+    val myRef = database.getReference("pickup location")
+
+
 
     //checking if permission is granted
     val context = LocalContext.current
@@ -153,8 +161,9 @@ fun MapScreen(mapViewModel: MapViewModel, navController: NavController) {
 
         Button(
             onClick = {
-
-                saveTripToFirebase(pickLocation, dropLocation, context, mapViewModel.database)
+                myRef.setValue("$pickLocation")
+                //myRef.setValue("$dropLocation")
+                //saveTripToFirebase(pickLocation, dropLocation, context, database)
                 navController.navigate("ride")
             }
         ){
@@ -163,14 +172,15 @@ fun MapScreen(mapViewModel: MapViewModel, navController: NavController) {
     }
 }
 
+/*
 fun saveTripToFirebase(
     pickupLocation: LatLng?,
     dropoffLocation: LatLng?,
     context: Context,
-    database: DatabaseReference
+    database: FirebaseDatabase
 ){
     if(pickupLocation == null || dropoffLocation == null){
-        Toast.makeText(context, "Select both prickup and dropoff location", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Select both pickup and dropoff location", Toast.LENGTH_LONG).show()
         return
     }
 
@@ -178,7 +188,7 @@ fun saveTripToFirebase(
     val pickupAddress = geocoder.getFromLocation(pickupLocation.latitude, pickupLocation.longitude, 1)
     val dropoffAddress = geocoder.getFromLocation(dropoffLocation.latitude, dropoffLocation.longitude,1)
 
-    val pickupLoc = pickupAddress?.get(0)?.let {
+    val pickupLoc = pickupAddress?.getOrNull(0)?.let {
         Location(
         latitude = pickupLocation.latitude,
         longitude = pickupLocation.longitude,
@@ -186,7 +196,7 @@ fun saveTripToFirebase(
     )
     }
 
-    val dropoffLoc = dropoffAddress?.get(0)?.let {
+    val dropoffLoc = dropoffAddress?.getOrNull(0)?.let {
         Location(
         latitude = dropoffLocation.latitude,
         longitude = dropoffLocation.longitude,
@@ -214,9 +224,13 @@ fun saveTripToFirebase(
                     Toast.makeText(context, "Failed to save trip", Toast.LENGTH_LONG).show()
                 }
             }
+    }else{
+        Toast.makeText(context, "Failed to generate trip id", Toast.LENGTH_LONG).show()
     }
 }
 
+
+ */
 
 
 

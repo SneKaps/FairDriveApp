@@ -24,7 +24,7 @@ class MapViewModel :ViewModel(){
     private val _userLocation = mutableStateOf<LatLng?>(null)
     val userLocation: State<LatLng?> = _userLocation
 
-    val database: DatabaseReference = FirebaseDatabase.getInstance().reference
+    //val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     //state to store selected location
     private val _pickLocation = mutableStateOf<LatLng?>(null)
